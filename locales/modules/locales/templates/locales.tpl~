@@ -1,0 +1,19 @@
+<form action="{jurl 'locales~locales:savecreate'}" method="post">
+<table>
+    <tr>
+        <th></th>
+        {foreach $locales as $l}
+        <th>{$l}</th>
+        {/foreach}
+    </tr>
+        {foreach $form_params as $fp=>$value}
+        <tr>
+            <td>{$fp}</td>
+            {foreach $locales as $l}
+            <td><input type="text" name="{$l}*{$fp}"></td>
+            {/foreach}
+        </tr>
+        {/foreach}
+</table>
+<input type="submit" />
+</form>
