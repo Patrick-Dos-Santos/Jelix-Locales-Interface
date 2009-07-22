@@ -1,7 +1,8 @@
 <!-->
 Probleme : 
-- les espaces et . sont remplacés par des _ lors de la récupération des params
 - il faut virer les charset et utiliser celui par défaut
+- remplacer le titre de la page par défaut
+- supprimer les méthodes inutiles
 <-->
 <form action="{jurl 'locales~locales:savecreate'}" method="post">
 <table>
@@ -11,9 +12,9 @@ Probleme :
         <th>{$l}</th>
         {/foreach}
     </tr>
-        {foreach $params_name as $fp=>$id}
+        {foreach $params_name as $id=>$key}
         <tr>
-            <td>{$fp}</td>
+            <td>{$key}</td>
             {foreach $locales as $l}
                         <td>
                             <input type="text" name="{$id}::{$l}" 
