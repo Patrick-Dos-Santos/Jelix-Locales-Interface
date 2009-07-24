@@ -11,14 +11,12 @@ class localesCtrl extends jController {
     
 	function index() {
 		$rep = $this->getResponse('html');
+		$rep->addCSSLink($GLOBALS['gJConfig']->urlengine['basePath'].'tests/locales.css');
+		$locales_interface_loader = jClasses::createInstance('locales~localesInterfaceLoader');
 		
-		$locales_manager = jClasses::createInstance('locales~localesManager');
-		
-		$locales_manager->initLocaleManager();
-		$locales_manager->createAndStoreParams();
-
-		$params_name = $locales_manager->getLocaleAttributesName();
-		$params_value = $locales_manager->getLocaleAttributesValues();
+		$locales_interface_loader->initLocaleManager();
+		$params_name = $locales_interface_loader->getLocaleAttributesName();
+		$params_value = $locales_interface_loader->getLocaleAttributesValues();
 		
 		$tpl = $this->assignTemplate($params_name, $params_value);
 		$rep->body->assign('MAIN', $tpl->fetch('locales'));
@@ -39,7 +37,7 @@ class localesCtrl extends jController {
 		$rep->action = $this->getAction('index');
 		$params = $this->params();
 		
-		$locales_manager = jClasses::createInstance('locales~localesManager');
+		$locales_manager = jClasses::createInstance('locales~localesInterfaceReader');
 		$locales_manager->createLocaleFiles($params);
 		return $rep;
 	}

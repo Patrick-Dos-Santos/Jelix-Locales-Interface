@@ -1,10 +1,5 @@
-<!-->
-Probleme : 
-- il faut virer les charset et utiliser celui par défaut
-- remplacer le titre de la page par défaut
-- supprimer les méthodes inutiles
-<-->
 <form action="{jurl 'locales~locales:savecreate'}" method="post">
+<input type="submit" />
 <table>
     <tr>
         <th></th>
@@ -14,10 +9,10 @@ Probleme :
     </tr>
         {foreach $params_name as $id=>$key}
         <tr>
-            <td>{$key}</td>
+            <td class="key">{$key}</td>
             {foreach $locales as $l}
                         <td>
-                            <input type="text" name="{$id}::{$l}" 
+                            <input type="text" name="{$id}::{$l}"
                             {foreach $params_value as $param=>$value}
                                 {if $param == $id.$l}
                                 value="{$value}"
@@ -31,4 +26,3 @@ Probleme :
 </table>
 <input type="submit" />
 </form>
-
